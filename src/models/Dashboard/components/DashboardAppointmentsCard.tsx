@@ -2,12 +2,8 @@ import { Icon } from '@iconify/react';
 import { Button } from "@/components/ui/button";
 import { Table, TableHeader, TableRow, TableCell } from "@/components/ui/table";
 import DashboardCard from "./DashboardCard";
+import { Appointment } from '@/types/schemas';
 
-interface Appointment {
-    type: string;
-    date: string;
-    time: string;
-}
 
 interface DashboardAppointmentsCardProps {
     appointments: Appointment[];

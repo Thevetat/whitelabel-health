@@ -2,14 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Icon } from '@iconify/react';
 import { Card } from "@/components/ui/card";
 import DashboardCoverageListItem from "./DashboardCoverageListItem";
+import { CoverageInfo } from "@/types/schemas";
 
-interface CoverageInfo {
-    insuranceProvider: string;
-    dmeCoinsurance: string;
-    pcpCopay: string;
-    remainingDeductible: string;
-    specialistCopay: string;
-}
 
 interface DashboardCoverageInformationCardProps {
     coverageInfo: CoverageInfo;
