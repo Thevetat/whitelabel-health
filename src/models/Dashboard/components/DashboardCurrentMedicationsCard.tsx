@@ -1,13 +1,44 @@
 import { Button } from "@/components/ui/button";
 import DashboardCard from "./DashboardCard";
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog";
 
 interface Medication {
     name: string;
     dosage: string;
+    instructions: string;
 }
 
 interface DashboardCurrentMedicationsCardProps {
     medications: Medication[];
+}
+
+function MedicationInstructionsDialog({ medication }: { medication: Medication }) {
+    return (
+        <Dialog>
+            <DialogTrigger asChild>
+                <Button variant="link" size="sm" className="underline">
+                    View instructions
+                </Button>
+            </DialogTrigger>
+            <DialogContent>
+                <DialogHeader>
+                    <DialogTitle>{medication.name}</DialogTitle>
+                </DialogHeader>
+                <div className="mt-4">
+                    <h4 className="font-semibold mb-2">Dosage:</h4>
+                    <p>{medication.dosage}</p>
+                    <h4 className="font-semibold mt-4 mb-2">Instructions:</h4>
+                    <p>{medication.instructions}</p>
+                </div>
+            </DialogContent>
+        </Dialog>
+    );
 }
 
 function DashboardCurrentMedicationsCard({ medications }: DashboardCurrentMedicationsCardProps) {
@@ -20,14 +51,12 @@ function DashboardCurrentMedicationsCard({ medications }: DashboardCurrentMedica
                             <p className="font-semibold">{medication.name}</p>
                             <p className="text-sm text-gray-500">{medication.dosage}</p>
                         </div>
-                        <Button variant="link" size="sm" className="underline">
-                            View instructions
-                        </Button>
+                        <MedicationInstructionsDialog medication={medication} />
                     </li>
                 ))}
             </ul>
             <div className="flex flex-col mt-8 items-end justify-center">
-                <Button >
+                <Button>
                     View All
                 </Button>
             </div>

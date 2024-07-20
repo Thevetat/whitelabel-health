@@ -20,10 +20,26 @@ const medicalReports = [
 ];
 
 const medications = [
-    { name: "Humulin R U-100", dosage: "100mg | Oral" },
-    { name: "Pramlintide (SymlinPen)", dosage: "250mg | Oral" },
-    { name: "Alogliptin (Nesina)", dosage: "100mg | Oral" },
-    { name: "Alogliptin (Nesina)", dosage: "1000mg | Oral" },
+    {
+        name: "Humulin R U-100",
+        dosage: "100mg | Oral",
+        instructions: "Take 30 minutes before meals. Monitor blood sugar levels closely."
+    },
+    {
+        name: "Pramlintide (SymlinPen)",
+        dosage: "250mg | Oral",
+        instructions: "Inject subcutaneously before meals. Do not mix with insulin."
+    },
+    {
+        name: "Alogliptin (Nesina)",
+        dosage: "100mg | Oral",
+        instructions: "Take once daily with or without food. Report any side effects to your doctor."
+    },
+    {
+        name: "Metformin",
+        dosage: "1000mg | Oral",
+        instructions: "Take with meals twice daily. Stay hydrated and avoid alcohol while on this medication."
+    },
 ];
 
 const coverageInfo = {
