@@ -21,13 +21,13 @@ function DashboardCoverageInformationCard({ coverageInfo }: DashboardCoverageInf
                     <h2 className="text-2xl max-w-15ch">Your Coverage <br />Information</h2>
                 </div>
                 <div className="mb-4 text-[#3B3939] text-xl mt-6 font-semibold">
-                    {coverageInfo.insuranceProvider}
+                    {coverageInfo.insurance_provider}
                 </div>
                 <ul className="mb-4 space-y-2">
-                    <DashboardCoverageListItem item="DME Coinsurance" value={coverageInfo.dmeCoinsurance} />
-                    <DashboardCoverageListItem item="PCP Copay" value={coverageInfo.pcpCopay} />
-                    <DashboardCoverageListItem item="Remaining Deductible" value={coverageInfo.remainingDeductible} />
-                    <DashboardCoverageListItem item="Specialist Copay" value={coverageInfo.specialistCopay} />
+                    <DashboardCoverageListItem item="DME Coinsurance" value={coverageInfo.dme_coinsurance} />
+                    <DashboardCoverageListItem item="PCP Copay" value={coverageInfo.pcp_copay} />
+                    <DashboardCoverageListItem item="Remaining Deductible" value={coverageInfo.remaining_deductible} />
+                    <DashboardCoverageListItem item="Specialist Copay" value={coverageInfo.specialist_copay} />
                 </ul>
                 <div className="ml-auto mt-auto">
                     <Button variant="link" className="text-[#887DA4] text-lg">More Details</Button>

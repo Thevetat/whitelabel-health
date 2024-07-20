@@ -33,11 +33,11 @@ export const medicationInsertSchema = medicationSchema.omit({ id: true });
 
 export const coverageInfoSchema = z.object({
     id: z.string().uuid(),
-    insuranceProvider: z.string(),
-    dmeCoinsurance: z.string(),
-    pcpCopay: z.string(),
-    remainingDeductible: z.string(),
-    specialistCopay: z.string(),
+    insurance_provider: z.string(),
+    dme_coinsurance: z.string(),
+    pcp_copay: z.string(),
+    remaining_deductible: z.string(),
+    specialist_copay: z.string(),
 });
 
 export const coverageInfoInsertSchema = coverageInfoSchema.omit({ id: true });
