@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import DashboardAppointmentsCard from "../components/DashboardAppointmentsCard";
 import DashboardMedicalReportsCard from "../components/DashboardMedicalReportsCard";
 import DashboardCurrentMedicationsCard from "../components/DashboardCurrentMedicationsCard";
