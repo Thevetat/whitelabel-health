@@ -2,7 +2,7 @@ import { Icon } from '@iconify/react';
 import { Button } from "@/components/ui/button";
 import { Table, TableHeader, TableRow, TableCell } from "@/components/ui/table";
 import DashboardCard from "./DashboardCard";
-import { Appointment } from '@/types/schemas';
+import { Appointment } from '@/models/Appointments/Appointments';
 
 
 interface DashboardAppointmentsCardProps {

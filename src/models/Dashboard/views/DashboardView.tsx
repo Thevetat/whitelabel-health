@@ -1,59 +1,63 @@
-import { useEffect, useState } from 'react';
-import { Appointment, MedicalReport, Medication, CoverageInfo } from '../../../types/schemas';
+import { useEffect } from 'react';
+import { useNavigation } from '@/contexts/NavigationContext';
 import DashboardAppointmentsCard from "../components/DashboardAppointmentsCard";
 import DashboardMedicalReportsCard from "../components/DashboardMedicalReportsCard";
 import DashboardCurrentMedicationsCard from "../components/DashboardCurrentMedicationsCard";
 import DashboardCoverageInformationCard from "../components/DashboardCoverageInformationCard";
 import DashboardAssistanceBanner from "../components/DashboardAssitanceBanner";
-import { supabase } from '@/db/config';
+import { SITE_LINKS } from '@/data/SiteLinks';
 import LoadingSpinner from '@/components/Misc/LoadingSpinner';
 import ErrorMessage from '@/components/Misc/ErrorMessage';
+import { useAppointmentsStore } from '@/models/Appointments/AppointmentsStore';
+import { useMedicalReportsStore } from '@/models/MedicalReports/MedicalReportsStore';
+import { useMedicationsStore } from '@/models/Medications/MedicationsStore';
+import { useCoverageInfoStore } from '@/models/CoverageInfo/CoverageInfoStore';
 
-function Dashboard() {
-    const [appointmentsData, setAppointmentsData] = useState<Appointment[]>([]);
-    const [medicalReportsData, setMedicalReportsData] = useState<MedicalReport[]>([]);
-    const [medicationsData, setMedicationsData] = useState<Medication[]>([]);
-    const [coverageInfoData, setCoverageInfoData] = useState<CoverageInfo | null>(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+function DashboardView() {
+    const { updatePageInfo } = useNavigation();
+
+    const {
+        data: appointments,
+        isLoading: appointmentsLoading,
+        error: appointmentsError,
+        fetchAppointments
+    } = useAppointmentsStore();
+
+    const {
+        data: medicalReports,
+        isLoading: reportsLoading,
+        error: reportsError,
+        fetchMedicalReports
+    } = useMedicalReportsStore();
+
+    const {
+        data: medications,
+        isLoading: medicationsLoading,
+        error: medicationsError,
+        fetchMedications
+    } = useMedicationsStore();
+
+    const {
+        data: coverageInfoData,
+        isLoading: coverageLoading,
+        error: coverageError,
+        fetchCoverageInfo
+    } = useCoverageInfoStore();
 
     useEffect(() => {
-        async function fetchData() {
-            try {
-                setIsLoading(true);
-                setError(null);  // Clear any previous errors
+        updatePageInfo(
+            SITE_LINKS.main.home.title,
+            SITE_LINKS.main.home.metaDescription
+        );
 
-                const [
-                    { data: appointments, error: appointmentsError },
-                    { data: medicalReports, error: medicalReportsError },
-                    { data: medications, error: medicationsError },
-                    { data: coverageInfo, error: coverageInfoError }
-                ] = await Promise.all([
-                    supabase.from('appointments').select('*'),
-                    supabase.from('medical_reports').select('*'),
-                    supabase.from('medications').select('*'),
-                    supabase.from('coverage_info').select('*').limit(1).single()
-                ]);
+        fetchAppointments();
+        fetchMedicalReports();
+        fetchMedications();
+        fetchCoverageInfo();
+    }, [updatePageInfo, fetchAppointments, fetchMedicalReports, fetchMedications, fetchCoverageInfo]);
 
-                if (appointmentsError) throw new Error('Failed to fetch appointments');
-                if (medicalReportsError) throw new Error('Failed to fetch medical reports');
-                if (medicationsError) throw new Error('Failed to fetch medications');
-                if (coverageInfoError) throw new Error('Failed to fetch coverage info');
-
-                setAppointmentsData(appointments as Appointment[] || []);
-                setMedicalReportsData(medicalReports as MedicalReport[] || []);
-                setMedicationsData(medications as Medication[] || []);
-                setCoverageInfoData(coverageInfo as CoverageInfo);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-                setError('An error occurred while fetching data. Please try again later.');
-            } finally {
-                setIsLoading(false);
-            }
-        }
-
-        fetchData();
-    }, []);
+    const isLoading = appointmentsLoading || reportsLoading || medicationsLoading || coverageLoading;
+    const error = appointmentsError || reportsError || medicationsError || coverageError;
 
     if (isLoading) {
         return <LoadingSpinner />;
@@ -63,17 +67,19 @@ function Dashboard() {
         return <ErrorMessage message={error} />;
     }
 
+    const coverageInfo = coverageInfoData[0]; // Assuming we only have one coverage info object
+
     return (
         <>
             <DashboardAssistanceBanner />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-                <DashboardAppointmentsCard appointments={appointmentsData} className="col-span-1 lg:col-span-2" />
-                {coverageInfoData && <DashboardCoverageInformationCard coverageInfo={coverageInfoData} />}
-                <DashboardMedicalReportsCard medicalReports={medicalReportsData} className="col-span-1 lg:col-span-2" />
-                <DashboardCurrentMedicationsCard medications={medicationsData} />
+                <DashboardAppointmentsCard appointments={appointments} className="col-span-1 lg:col-span-2" />
+                {coverageInfo && <DashboardCoverageInformationCard coverageInfo={coverageInfo} />}
+                <DashboardMedicalReportsCard medicalReports={medicalReports} className="col-span-1 lg:col-span-2" />
+                <DashboardCurrentMedicationsCard medications={medications} />
             </div>
         </>
     );
 }
 
-export default Dashboard;
+export default DashboardView;

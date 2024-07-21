@@ -7,7 +7,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog";
-import { Medication } from "@/types/schemas";
+import { Medication } from "@/models/Medications/Medications";
 
 
 interface DashboardCurrentMedicationsCardProps {

@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Table, TableHeader, TableRow, TableCell } from "@/components/ui/table";
 import DashboardCard from "./DashboardCard";
 import { Icon } from '@iconify/react';
-import { MedicalReport } from "@/types/schemas";
+import { MedicalReport } from "@/models/MedicalReports/MedicalReports";
 
 interface DashboardMedicalReportsCardProps {
     medicalReports: MedicalReport[];

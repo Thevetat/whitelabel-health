@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Icon } from '@iconify/react';
 import { Card } from "@/components/ui/card";
 import DashboardCoverageListItem from "./DashboardCoverageListItem";
-import { CoverageInfo } from "@/types/schemas";
+import { CoverageInfo } from "@/models/CoverageInfo/CoverageInfo";
 
 
 interface DashboardCoverageInformationCardProps {
