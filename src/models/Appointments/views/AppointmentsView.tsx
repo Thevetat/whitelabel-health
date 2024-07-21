@@ -41,10 +41,6 @@ function AppointmentsView() {
                                 <TableCell>{appointment.date}</TableCell>
                                 <TableCell>{appointment.time}</TableCell>
                                 <TableCell>
-                                    <Button variant="outline" size="sm">
-                                        <Icon icon="ph:pencil" className="mr-2 h-4 w-4" />
-                                        Edit
-                                    </Button>
                                     <Button variant="outline" size="sm" className="ml-2">
                                         <Icon icon="ph:trash" className="mr-2 h-4 w-4" />
                                         Cancel
