@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
 import { useNavigation } from '@/contexts/NavigationContext';
 import DashboardView from "@/models/Dashboard/views/DashboardView";
+import { SITE_LINKS } from '@/data/SiteLinks';
 
 function HomeDashboardPage() {
     const { updatePageInfo } = useNavigation();
 
     useEffect(() => {
         updatePageInfo(
-            "My Health Overview",
-            "My Health Overview | Whitelable Health",
-            ""
+            SITE_LINKS.main.home.title,
+            SITE_LINKS.main.home.metaDescription
         );
     }, [updatePageInfo]);
 

@@ -8,7 +8,6 @@ function MedicationsPage() {
     useEffect(() => {
         updatePageInfo(
             SITE_LINKS.main.medications.title,
-            `${SITE_LINKS.main.medications.title} | Whitelabel Care`,
             SITE_LINKS.main.medications.metaDescription
         );
     }, [updatePageInfo]);

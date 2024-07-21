@@ -8,7 +8,6 @@ function BenefitsPage() {
     useEffect(() => {
         updatePageInfo(
             SITE_LINKS.main.benefits.title,
-            `${SITE_LINKS.main.benefits.title} | Whitelable Care`,
             SITE_LINKS.main.benefits.metaDescription
         );
     }, [updatePageInfo]);

@@ -8,7 +8,6 @@ function AppointmentsPage() {
     useEffect(() => {
         updatePageInfo(
             SITE_LINKS.main.appointments.title,
-            `${SITE_LINKS.main.appointments.title} | Whitelable Care`,
             SITE_LINKS.main.appointments.metaDescription
         );
     }, [updatePageInfo]);

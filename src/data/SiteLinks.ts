@@ -1,5 +1,7 @@
 import { PersonalSiteLinks } from "@/types/Router";
 
+export const APP_NAME = 'Whitelabel Care'
+
 export const SITE_LINKS: PersonalSiteLinks = {
     main: {
         home: {
@@ -7,7 +9,7 @@ export const SITE_LINKS: PersonalSiteLinks = {
             href: '/',
             menuDescription: 'Your Health Overview',
             metaDescription: 'View your health dashboard and manage your healthcare information',
-            icon: 'ph:heart',
+            icon: 'ph:heartbeat',
         },
         appointments: {
             title: 'Appointments',

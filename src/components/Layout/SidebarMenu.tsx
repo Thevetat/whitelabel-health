@@ -3,6 +3,7 @@ import { Icon } from '@iconify/react';
 import { Button } from "../ui/button";
 import SidebarButtons from './SidebarButtons';
 import { useNavigate } from 'react-router-dom';
+import { APP_NAME, SITE_LINKS } from '@/data/SiteLinks';
 
 interface PersonalSiteLink {
     title: string;
@@ -22,18 +23,18 @@ function SidebarMenu({ expanded, setExpanded, sidebarButtons, bottomButtons }: S
     const navigate = useNavigate();
 
     return (
-        <aside className={`inset-y fixed left-0 z-20 flex h-full flex-col border-r border-color bg-[#fafafa] transition-all duration-300 ease-in-out ${expanded ? 'w-[184px]' : 'w-[56px]'}`}>
+        <aside className={`inset-y fixed left-0 z-20 flex h-full flex-col border-r border-color bg-bg-main transition-all duration-300 ease-in-out ${expanded ? 'w-[184px]' : 'w-[56px]'}`}>
             <div className={`border-b border-color p-2 transition-all duration-300 ease-in-out ${expanded ? '' : ''}`}>
                 <Button
                     variant="ghost"
                     size={expanded ? "default" : "icon"}
                     aria-label="Home"
-                    onClick={() => navigate('/')}
-                    className={`w-full ${expanded ? 'justify-start' : 'justify-center'}`}
+                    onClick={() => navigate(SITE_LINKS.main.home.href)}
+                    className={`transition-all duration-300 ease-in-out flex items-center ${expanded ? 'w-full px-3 justify-start' : ''}`}
                 >
                     <div className="flex items-center gap-2">
-                        <Icon icon="ph:heartbeat" className="size-6 text-text-main" />
-                        {expanded && <span className="text-sm font-semibold">Whitelabel Care</span>}
+                        <Icon icon={SITE_LINKS.main.home.icon ?? ''} className="size-5 text-text-main" />
+                        {expanded && <span className="text-sm font-semibold">{APP_NAME}</span>}
                     </div>
                 </Button>
             </div>

@@ -8,7 +8,6 @@ function AccountPage() {
     useEffect(() => {
         updatePageInfo(
             SITE_LINKS.bottom.account.title,
-            `${SITE_LINKS.bottom.account.title} | Whitelable Care`,
             SITE_LINKS.bottom.account.metaDescription
         );
     }, [updatePageInfo]);

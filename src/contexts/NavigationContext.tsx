@@ -1,27 +1,25 @@
+import { APP_NAME } from '@/data/SiteLinks';
 import { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 
 interface NavigationContextType {
-    currentPageName: string;
     metaTitle: string;
     metaDescription: string;
-    updatePageInfo: (name: string, title: string, description: string) => void;
+    updatePageInfo: (title: string, description: string) => void;
 }
 
 const NavigationContext = createContext<NavigationContextType | undefined>(undefined);
 
 export function NavigationProvider({ children }: { children: ReactNode }) {
-    const [currentPageName, setCurrentPageName] = useState('');
     const [metaTitle, setMetaTitle] = useState('');
     const [metaDescription, setMetaDescription] = useState('');
 
-    const updatePageInfo = (name: string, title: string, description: string) => {
-        setCurrentPageName(name);
+    const updatePageInfo = (title: string, description: string) => {
         setMetaTitle(title);
         setMetaDescription(description);
     };
 
     useEffect(() => {
-        document.title = metaTitle;
+        document.title = `${metaTitle} | ${APP_NAME}`;
         const metaDescriptionTag = document.querySelector('meta[name="description"]');
         if (metaDescriptionTag) {
             metaDescriptionTag.setAttribute('content', metaDescription);
@@ -29,7 +27,7 @@ export function NavigationProvider({ children }: { children: ReactNode }) {
     }, [metaTitle, metaDescription]);
 
     return (
-        <NavigationContext.Provider value={{ currentPageName, metaTitle, metaDescription, updatePageInfo }}>
+        <NavigationContext.Provider value={{ metaTitle, metaDescription, updatePageInfo }}>
             {children}
         </NavigationContext.Provider>
     );

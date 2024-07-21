@@ -1,12 +1,12 @@
 import { useNavigation } from '@/contexts/NavigationContext';
 
 function Header() {
-    const { currentPageName } = useNavigation();
+    const { metaTitle } = useNavigation();
 
     return (
-        <header className="sticky top-0 z-10 flex h-[57px] items-center gap-1 border-b border-color bg-[#fafafa] px-4">
-            <h1 className="text-lg md:text-xl font-semibold text-[#33285A]">
-                {currentPageName}
+        <header className="sticky top-0 z-10 flex h-[57px] items-center gap-1 border-b border-color bg-main-main px-4">
+            <h1 className="text-lg md:text-xl font-semibold">
+                {metaTitle}
             </h1>
         </header>
     );

@@ -8,7 +8,6 @@ function HealthPlansPage() {
     useEffect(() => {
         updatePageInfo(
             SITE_LINKS.main.healthPlans.title,
-            `${SITE_LINKS.main.healthPlans.title} | Whitelabel Care`,
             SITE_LINKS.main.healthPlans.metaDescription
         );
     }, [updatePageInfo]);
