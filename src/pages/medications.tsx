@@ -1,6 +1,8 @@
-import { SITE_LINKS } from "@/data/SiteLinks";
+// src/pages/medications.tsx
 import { useEffect } from 'react';
 import { useNavigation } from '@/contexts/NavigationContext';
+import { SITE_LINKS } from "@/data/SiteLinks";
+import MedicationsView from '@/models/Medications/views/MedicationsView';
 
 function MedicationsPage() {
     const { updatePageInfo } = useNavigation();
@@ -12,11 +14,7 @@ function MedicationsPage() {
         );
     }, [updatePageInfo]);
 
-    return (
-        <div>
-            Medications Page Content
-        </div>
-    );
+    return <MedicationsView />;
 }
 
 export default MedicationsPage;

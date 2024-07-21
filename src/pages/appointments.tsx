@@ -1,6 +1,8 @@
-import { SITE_LINKS } from "@/data/SiteLinks";
+// src/pages/appointments.tsx
 import { useEffect } from 'react';
 import { useNavigation } from '@/contexts/NavigationContext';
+import { SITE_LINKS } from "@/data/SiteLinks";
+import AppointmentsView from '@/models/Appointments/views/AppointmentsView';
 
 function AppointmentsPage() {
     const { updatePageInfo } = useNavigation();
@@ -12,11 +14,7 @@ function AppointmentsPage() {
         );
     }, [updatePageInfo]);
 
-    return (
-        <div>
-            Appointments Page Content
-        </div>
-    );
+    return <AppointmentsView />;
 }
 
 export default AppointmentsPage;

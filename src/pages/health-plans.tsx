@@ -1,22 +1,19 @@
-import { SITE_LINKS } from "@/data/SiteLinks";
+// src/pages/coverage-info.tsx
 import { useEffect } from 'react';
 import { useNavigation } from '@/contexts/NavigationContext';
+import CoverageInfoView from '@/models/CoverageInfo/views/CoverageInfoView';
 
 function HealthPlansPage() {
     const { updatePageInfo } = useNavigation();
 
     useEffect(() => {
         updatePageInfo(
-            SITE_LINKS.main.healthPlans.title,
-            SITE_LINKS.main.healthPlans.metaDescription
+            'Coverage Information',
+            'View your health insurance coverage details'
         );
     }, [updatePageInfo]);
 
-    return (
-        <div>
-            Health Plans Page Content
-        </div>
-    );
+    return <CoverageInfoView />;
 }
 
-export default HealthPlansPage;
+export default HealthPlansPage();
