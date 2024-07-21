@@ -1,4 +1,3 @@
-// src/pages/medical-reports.tsx
 import { useEffect } from 'react';
 import { useNavigation } from '@/contexts/NavigationContext';
 import { SITE_LINKS } from "@/data/SiteLinks";
@@ -14,7 +13,9 @@ function MedicalReportsPage() {
         );
     }, [updatePageInfo]);
 
-    return <MedicalReportsView />;
+    return (
+        <MedicalReportsView />
+    )
 }
 
 export default MedicalReportsPage;

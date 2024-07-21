@@ -1,4 +1,3 @@
-// src/pages/coverage-info.tsx
 import { useEffect } from 'react';
 import { useNavigation } from '@/contexts/NavigationContext';
 import CoverageInfoView from '@/models/CoverageInfo/views/CoverageInfoView';
@@ -13,7 +12,9 @@ function HealthPlansPage() {
         );
     }, [updatePageInfo]);
 
-    return <CoverageInfoView />;
+    return (
+        <CoverageInfoView />
+    );
 }
 
-export default HealthPlansPage();
+export default HealthPlansPage;
