@@ -5,7 +5,7 @@ export const PersonalSiteLinkSchema = z.object({
     href: z.string(),
     menuDescription: z.string().describe('A short description used for menu subheadings'),
     metaDescription: z.string().describe('A meta description for SEO'),
-    icon: z.string().optional(),
+    icon: z.string(),
 })
 
 export const PersonalSiteLinksSchema = z.object({
