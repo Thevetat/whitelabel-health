@@ -23,17 +23,17 @@ function TooltipButtonLink({ title, description, href, icon, expanded }: Tooltip
             <TooltipTrigger asChild>
                 <Button
                     variant="ghost"
-                    size={expanded ? "default" : "icon"}
-                    className={`transition-all duration-300 ease-in-out flex items-center ${expanded ? 'w-full px-3 justify-start' : ''}`}
+                    size="icon"
+                    className={`rounded-lg transition-all duration-300 ease-in-out overflow-hidden ${expanded ? 'w-[160px] justify-start' : 'w-[40px] justify-center'}`}
                     aria-label={title}
                     onClick={() => navigate(href)}
                 >
-                    {icon && <Icon icon={icon} className="size-5 min-w-[20px]" />}
-                    {expanded && (
-                        <span className="ml-3 overflow-hidden whitespace-nowrap">
+                    <div className="flex items-center gap-2 w-full">
+                        {icon && <Icon icon={icon} className="ml-2 size-5 flex-shrink-0" />}
+                        <span className={`transition-all duration-300 ease-in-out whitespace-nowrap ${expanded ? 'opacity-100 max-w-[120px]' : 'opacity-0 max-w-0'}`}>
                             {title}
                         </span>
-                    )}
+                    </div>
                 </Button>
             </TooltipTrigger>
             <TooltipContent side="right" sideOffset={5}>
